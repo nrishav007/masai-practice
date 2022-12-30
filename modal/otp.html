@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="otp.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Enter OTP</h1>
+      <div class="userInput">
+        <input type="text" id="ist" maxlength="1" onkeyup="clickEvent(this,'sec')" />
+        <input type="text" id="sec" maxlength="1" onkeyup="clickEvent(this,'trd')"  />
+        <input type="text" id="trd" maxlength="1" onkeyup="clickEvent(this,'fth')"  />
+        <input type="text" id="fth" maxlength="1" onkeyup="clickEvent(this,'fh')"  />
+        <input type="text" id="fh" maxlength="1"/>
+      </div>
+      <button>Confirm</button>
+    </div>
+  </body>
+</html>
+<script>
+    function clickEvent(first,last){
+        if(first.value.length){
+            document.getElementById(last).focus();
+        }
+    }
+</script>

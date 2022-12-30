@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="index.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="open">Click to open</button>
+    <div class="modal-container" id="modal_container">
+      <div class="modal">
+        <h1>Enter Details</h1>
+        <input id="name" type="text" placeholder="Enter name" />
+        <input id="email" type="email" placeholder="Enter email" />
+        <input id="password" type="password" placeholder="Enter password" />
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+  const open = document.getElementById("open");
+  const modal = document.getElementById("modal_container");
+
+  const submit = document.getElementById("submit");
+  function student(n, e, p, g) {
+    this.name = n;
+    this.email = e;
+    this.password = p;
+    this.gender = g;
+  }
+  open.addEventListener("click", () => {
+    
+    modal.classList.add("show");
+  });
+  let allData = JSON.parse(localStorage.getItem("student")) || [];
+  submit.addEventListener("click", () => {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const gender = document.getElementById("gender").value;
+    const studentArray = new student(name, email, password, gender);
+    allData.push(studentArray);
+    localStorage.setItem("student", JSON.stringify(allData));
+    modal.classList.remove("show");
+  });
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  console.log(getRandomInt(10,99));
+</script>
